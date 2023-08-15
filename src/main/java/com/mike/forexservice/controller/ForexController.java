@@ -18,11 +18,11 @@ public class ForexController {
 
     @GetMapping("/from/{from}/to/{to}")
     public ResponseEntity<ExchangeValue> retrieveExchangeValue(@PathVariable String from, @PathVariable String to) {
-        return ResponseEntity.ok(forexService.calculateRate(from, to));
+        return new ResponseEntity<>(forexService.calculateRate(from, to), HttpStatus.OK);
     }
 
-    @GetMapping
-    public ResponseEntity<?> getRateForTest() {
-        return new ResponseEntity<>(feignService.getLatestRates("RUBl"), HttpStatus.OK);
+    @GetMapping("/info")
+    public ResponseEntity<?> getAllCurrencies() {
+        return new ResponseEntity<>(feignService.getAllCurrencies(), HttpStatus.OK);
     }
 }

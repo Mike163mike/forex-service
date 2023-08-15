@@ -1,4 +1,3 @@
--- drop table if exists exchange_value;
 create table exchange_value
 (
     id uuid primary key,
